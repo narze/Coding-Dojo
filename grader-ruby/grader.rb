@@ -2,18 +2,16 @@ class Grader
   def self.call(score)
     raise ArgumentError, "Non integer score" unless score.kind_of?(Integer)
 
-    case
-    when score > 100
-      raise ArgumentError, "Out of bounds"
-    when score > 90
+    case score
+    when 91..100
       "A"
-    when score > 80
+    when 81..90
       "B"
-    when score > 70
+    when 71..80
       "C"
-    when score > 60
+    when 61..70
       "D"
-    when score >= 0
+    when 0..60
       "F"
     else
       raise ArgumentError, "Out of bounds"
