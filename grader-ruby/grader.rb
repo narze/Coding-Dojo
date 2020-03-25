@@ -1,5 +1,9 @@
 class Grader
   def self.call(score)
-    "A"
+    if score > 90
+      "A"
+    else
+      "B"
+    end
   end
 end
