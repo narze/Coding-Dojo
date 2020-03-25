@@ -8,48 +8,23 @@ class GraderTest < Minitest::Test
   # D = 61~70
   # F = 0~60
 
-  def test_100_points_grade_A
-    assert_equal "A", Grader.call(100)
-  end
+  CASES = {
+    100 => "A",
+    91 => "A",
+    90 => "B",
+    81 => "B",
+    80 => "C",
+    71 => "C",
+    70 => "D",
+    61 => "D",
+    60 => "F",
+    0 => "F",
+  }
 
-  def test_91_points_grade_A
-    assert_equal "A", Grader.call(91)
-  end
-
-  def test_90_points_grade_B
-    assert_equal "B", Grader.call(90)
-  end
-
-  def test_81_points_grade_B
-    assert_equal "B", Grader.call(81)
-  end
-
-  def test_80_points_grade_C
-    assert_equal "C", Grader.call(80)
-  end
-
-  def test_71_points_grade_C
-    assert_equal "C", Grader.call(71)
-  end
-
-  def test_70_points_grade_D
-    assert_equal "D", Grader.call(70)
-  end
-
-  def test_61_points_grade_D
-    assert_equal "D", Grader.call(61)
-  end
-
-  def test_60_points_grade_F
-    assert_equal "F", Grader.call(60)
-  end
-
-  def test_50_points_grade_F
-    assert_equal "F", Grader.call(50)
-  end
-
-  def test_0_points_grade_F
-    assert_equal "F", Grader.call(0)
+  CASES.each do |(point, grade)|
+    define_method "test_#{point}_points_grade_#{grade}" do
+      assert_equal grade, Grader.call(point.to_i)
+    end
   end
 
   def test_101_points_invalid
