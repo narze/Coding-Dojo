@@ -51,4 +51,16 @@ class GraderTest < Minitest::Test
   def test_0_points_grade_F
     assert_equal "F", Grader.call(0)
   end
+
+  def test_101_points_invalid
+    assert_raises(ArgumentError) do
+      Grader.call(101)
+    end
+  end
+
+  def test_minus_points_invalid
+    assert_raises(ArgumentError) do
+      Grader.call(-1)
+    end
+  end
 end

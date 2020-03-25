@@ -9,8 +9,10 @@ class Grader
       "C"
     when score > 60
       "D"
-    else
+    when score >= 0
       "F"
+    else
+      raise ArgumentError
     end
   end
 end
