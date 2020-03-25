@@ -25,6 +25,10 @@ class GraderTest < Minitest::Test
     define_method "test_#{point}_points_grade_#{grade}" do
       assert_equal grade, Grader.call(point.to_i)
     end
+
+    define_method "test_#{point}_points_grade_#{grade}_codegolf" do
+      assert_equal grade, Grader.call_codegolf(point.to_i)
+    end
   end
 
   def test_101_points_invalid

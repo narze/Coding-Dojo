@@ -11,6 +11,11 @@ class Grader
     grade
   end
 
+  # CodeGolf version (Does not support raising error)
+  def self.call_codegolf(s)
+    "xABCDFx"[[s,101,91,81,71,61,0].sort.reverse.index(s)]
+  end
+
   def self.call_with_case(score)
     raise ArgumentError, "Non integer score" unless score.kind_of?(Integer)
 
