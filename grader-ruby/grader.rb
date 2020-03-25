@@ -1,5 +1,7 @@
 class Grader
   def self.call(score)
+    raise ArgumentError, "Non integer score" unless score.kind_of?(Integer)
+
     case
     when score > 100
       raise ArgumentError, "Out of bounds"

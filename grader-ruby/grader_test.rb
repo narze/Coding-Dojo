@@ -63,4 +63,16 @@ class GraderTest < Minitest::Test
       Grader.call(-1)
     end
   end
+
+  def test_float_points_invalid
+    assert_raises(ArgumentError) do
+      Grader.call(55.55)
+    end
+  end
+
+  def test_string_points_invalid
+    assert_raises(ArgumentError) do
+      Grader.call("99")
+    end
+  end
 end
