@@ -1,6 +1,8 @@
 class Grader
   def self.call(score)
     case
+    when score > 100
+      raise ArgumentError, "Out of bounds"
     when score > 90
       "A"
     when score > 80
@@ -12,7 +14,7 @@ class Grader
     when score >= 0
       "F"
     else
-      raise ArgumentError
+      raise ArgumentError, "Out of bounds"
     end
   end
 end
