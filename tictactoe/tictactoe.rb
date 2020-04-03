@@ -24,32 +24,24 @@ class Tictactoe
   end
 
   def get_winner
-    if x_win?
+    if win?("X")
       "X"
-    elsif o_win?
+    elsif win?("O")
       "O"
     else
       nil
     end
   end
 
-  def x_win?
-    board_matrix = @board.each_slice(3)
-                         .to_a
+  private
 
-    board_matrix.include?(["X", "X", "X"]) ||
-      board_matrix.transpose.include?(["X", "X", "X"]) ||
-      (@board[0] == "X" && @board[4] == "X" && @board[8] == "X") ||
-      (@board[2] == "X" && @board[4] == "X" && @board[6] == "X")
-  end
+    def win?(p)
+      board_matrix = @board.each_slice(3)
+                          .to_a
 
-  def o_win?
-    board_matrix = @board.each_slice(3)
-                         .to_a
-
-    board_matrix.include?(["O", "O", "O"]) ||
-      board_matrix.transpose.include?(["O", "O", "O"]) ||
-      (@board[0] == "O" && @board[4] == "O" && @board[8] == "O") ||
-      (@board[2] == "O" && @board[4] == "O" && @board[6] == "O")
-  end
+      board_matrix.include?([p, p, p]) ||
+        board_matrix.transpose.include?([p, p, p]) ||
+        (@board[0] == p && @board[4] == p && @board[8] == p) ||
+        (@board[2] == p && @board[4] == p && @board[6] == p)
+    end
 end
