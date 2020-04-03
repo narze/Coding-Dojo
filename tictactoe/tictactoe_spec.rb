@@ -74,6 +74,47 @@ RSpec.describe Tictactoe do
   end
 
   describe "#get_winner" do
+    it "returns nil if no winner" do
+      tictactoe.board = [nil] * 9
+      expect(tictactoe.get_winner).to be_nil
+    end
 
+    it "returns X when get 3 Xs in a row" do
+      # Role
+      tictactoe.board = [
+        "X", "X", "X",
+        nil, nil, nil,
+        nil, nil, nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "X"
+
+      # Column
+      tictactoe.board = [
+        nil, "X", nil,
+        nil, "X", nil,
+        nil, "X", nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "X"
+
+      # Across \
+      tictactoe.board = [
+        "X", nil, nil,
+        nil, "X", nil,
+        nil, nil, "X",
+      ]
+
+      expect(tictactoe.get_winner).to eq "X"
+
+      # Across /
+      tictactoe.board = [
+        nil, nil, "X",
+        nil, "X", nil,
+        "X", nil, nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "X"
+    end
   end
 end

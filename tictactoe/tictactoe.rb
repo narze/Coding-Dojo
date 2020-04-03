@@ -1,5 +1,5 @@
 class Tictactoe
-  attr_reader :board
+  attr_accessor :board
 
   def initialize(board = [nil] * 9)
     @board = board
@@ -21,5 +21,22 @@ class Tictactoe
     @board[index] = is_x ? "X" : "O"
 
     true
+  end
+
+  def get_winner
+    if @board.each_slice(3)
+             .to_a
+             .include?(["X", "X", "X"])
+      "X"
+    elsif @board.each_slice(3)
+                .to_a
+                .transpose
+                .include?(["X", "X", "X"])
+      "X"
+    elsif @board[0] == "X" && @board[4] == "X" && @board[8] == "X"
+      "X"
+    elsif @board[2] == "X" && @board[4] == "X" && @board[6] == "X"
+      "X"
+    end
   end
 end
