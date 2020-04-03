@@ -10,4 +10,15 @@ class Tictactoe
           .to_a
           .join("\n")
   end
+
+  def take_slot(is_x, row, col)
+    index = row * 3 + col
+
+    return false if @board[index]
+
+    @board[index] = is_x ? "X" : "O"
+
+    true
+  end
+
 end
