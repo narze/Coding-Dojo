@@ -1,6 +1,8 @@
 class Tictactoe
-  def initialize
-    @board = [nil] * 9
+  attr_reader :board
+
+  def initialize(board = [nil] * 9)
+    @board = board
   end
 
   def print
@@ -20,5 +22,4 @@ class Tictactoe
 
     true
   end
-
 end

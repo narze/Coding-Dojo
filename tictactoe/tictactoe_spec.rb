@@ -4,6 +4,28 @@ require "./tictactoe.rb"
 RSpec.describe Tictactoe do
   subject(:tictactoe) { Tictactoe.new }
 
+  describe "#new" do
+    subject(:tictactoe) { Tictactoe.new(board) }
+
+    let(:board) do
+      [nil, nil, nil, "X", "O", "X", nil, nil, nil]
+    end
+
+    it "can set whole board from array" do
+      subject
+
+      expect(tictactoe.board).to eq [
+        nil, nil, nil, "X", "O", "X", nil, nil, nil
+      ]
+
+      expect(tictactoe.print).to eq [
+        "...",
+        "XOX",
+        "...",
+      ].join("\n")
+    end
+  end
+
   describe "#print" do
     subject { tictactoe.print }
 
