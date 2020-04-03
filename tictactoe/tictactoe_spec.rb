@@ -116,5 +116,43 @@ RSpec.describe Tictactoe do
 
       expect(tictactoe.get_winner).to eq "X"
     end
+
+    it "returns O when get 3 Os in a row" do
+      # Role
+      tictactoe.board = [
+        "O", "O", "O",
+        nil, nil, nil,
+        nil, nil, nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "O"
+
+      # Column
+      tictactoe.board = [
+        nil, "O", nil,
+        nil, "O", nil,
+        nil, "O", nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "O"
+
+      # Across \
+      tictactoe.board = [
+        "O", nil, nil,
+        nil, "O", nil,
+        nil, nil, "O",
+      ]
+
+      expect(tictactoe.get_winner).to eq "O"
+
+      # Across /
+      tictactoe.board = [
+        nil, nil, "O",
+        nil, "O", nil,
+        "O", nil, nil,
+      ]
+
+      expect(tictactoe.get_winner).to eq "O"
+    end
   end
 end
