@@ -5,6 +5,12 @@ class Tictactoe
     @board = board
   end
 
+  # Print board in 3x3 format
+  # Non-played slot is printed in .
+  # Example :
+  #    .X.
+  #    XO.
+  #    ..O
   def print
     @board.map { |c| c.nil? ? "." : c }
           .join
@@ -37,7 +43,7 @@ class Tictactoe
 
     def win?(p)
       board_matrix = @board.each_slice(3)
-                          .to_a
+                           .to_a
 
       board_matrix.include?([p, p, p]) ||
         board_matrix.transpose.include?([p, p, p]) ||
